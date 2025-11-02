@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=3 uid="uid://dwao4bwllufoi"]
+
+[ext_resource type="Script" uid="uid://but4jrd00eutn" path="res://scripts/fire_thrower.gd" id="1_w1ffy"]
+[ext_resource type="Texture2D" uid="uid://8mgor6qmq0hm" path="res://assets/Traps/Fire/Off.png" id="2_ocya2"]
+[ext_resource type="Texture2D" uid="uid://dyr1b5ipsn45c" path="res://assets/Traps/Fire/On (16x32).png" id="3_qt2vt"]
+[ext_resource type="Texture2D" uid="uid://r2hypym4r5x2" path="res://assets/Traps/Fire/Hit (16x32).png" id="4_l1dxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4pk"]
+atlas = ExtResource("2_ocya2")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2xxo"]
+atlas = ExtResource("3_qt2vt")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cbcq"]
+atlas = ExtResource("3_qt2vt")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isj1j"]
+atlas = ExtResource("3_qt2vt")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so66j"]
+atlas = ExtResource("4_l1dxh")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr1x6"]
+atlas = ExtResource("4_l1dxh")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5akn"]
+atlas = ExtResource("4_l1dxh")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbtxt"]
+atlas = ExtResource("4_l1dxh")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2fux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4pk")
+}],
+"loop": true,
+"name": &"fire_off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cbcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isj1j")
+}],
+"loop": true,
+"name": &"fire_on",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so66j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr1x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5akn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbtxt")
+}],
+"loop": false,
+"name": &"step_on",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7g0b"]
+size = Vector2(24, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmfjm"]
+size = Vector2(18, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go7sj"]
+size = Vector2(24, 1)
+
+[node name="fire_thrower" type="RigidBody2D"]
+texture_filter = 1
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_w1ffy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_x2fux")
+animation = &"fire_off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_s7g0b")
+
+[node name="fire_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fire_area"]
+visible = false
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_mmfjm")
+
+[node name="triggger_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggger_area"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_go7sj")
+
+[node name="fire_on_latency" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="fire_off_latency" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="fire_area" to="." method="_on_fire_area_body_entered"]
+[connection signal="body_entered" from="triggger_area" to="." method="_on_triggger_area_body_entered"]
+[connection signal="timeout" from="fire_on_latency" to="." method="_on_fire_latency_timeout"]
+[connection signal="timeout" from="fire_off_latency" to="." method="_on_fire_off_latency_timeout"]

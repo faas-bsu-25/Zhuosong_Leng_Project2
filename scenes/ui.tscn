@@ -1,0 +1,465 @@
+[gd_scene load_steps=19 format=3 uid="uid://i4i86rtrkkr2"]
+
+[ext_resource type="Script" uid="uid://s84rp0elmsyo" path="res://scripts/UI.gd" id="1_x4jx1"]
+[ext_resource type="Texture2D" uid="uid://btob1kbxc0n2" path="res://assets/Transition.png" id="2_yev5y"]
+[ext_resource type="Texture2D" uid="uid://csr5xhq05etes" path="res://assets/Fruits/Apple.png" id="3_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://ghlwpcjt1nt2" path="res://assets/Fruits/Bananas.png" id="4_ktti3"]
+[ext_resource type="Texture2D" uid="uid://7un46xs0oe5y" path="res://assets/Fruits/Cherries.png" id="5_cgfq5"]
+[ext_resource type="Texture2D" uid="uid://684s0j1v82fa" path="res://assets/Fruits/Orange.png" id="6_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://0eke43ri02gh" path="res://assets/PC _ Computer - The Binding of Isaac_ Rebirth - Miscellaneous - UI Hearts.png" id="7_ktti3"]
+[ext_resource type="Texture2D" uid="uid://d4i0d0jp15u58" path="res://assets/Fruits/Melon.png" id="7_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://5aa6lts5043h" path="res://assets/start_cover.jpg" id="8_cgfq5"]
+[ext_resource type="Texture2D" uid="uid://m35mkef140ry" path="res://assets/end_cover.png" id="9_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://b3jh7gy2u3ipn" path="res://assets/lose_cover.jpg" id="10_6rmj2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktti3"]
+atlas = ExtResource("7_ktti3")
+region = Rect2(16.0427, 0.0836716, 15.9696, 14.9356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rmj2"]
+atlas = ExtResource("3_p7vwb")
+region = Rect2(9.8563, 6.69405, 12.1828, 14.436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsj0x"]
+atlas = ExtResource("4_ktti3")
+region = Rect2(8.88406, 7.82031, 14.2698, 14.2125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsv74"]
+atlas = ExtResource("5_cgfq5")
+region = Rect2(8.89742, 8.86809, 14.3271, 14.3844)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1mc3"]
+atlas = ExtResource("6_7dvkv")
+region = Rect2(8.92251, 8.80456, 17.1926, 14.2229)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cof4p"]
+atlas = ExtResource("7_vdcm2")
+region = Rect2(6.95078, 9.83203, 18.0838, 12.2516)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgfq5"]
+atlas = ExtResource("7_ktti3")
+region = Rect2(-0.0386696, -0.0324383, 16.1734, 15.1121)
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("heart_1", "heart_2", "heart_3")]
+script = ExtResource("1_x4jx1")
+heart_1 = NodePath("Control/health/heart")
+heart_2 = NodePath("Control/health/heart2")
+heart_3 = NodePath("Control/health/heart3")
+half_heart = SubResource("AtlasTexture_ktti3")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="fruit_num" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.8
+anchor_right = 28.8
+offset_left = -136.0
+offset_right = -1.0
+offset_bottom = 209.0
+metadata/_edit_group_ = true
+
+[node name="apple" type="TextureRect" parent="Control/fruit_num"]
+layout_mode = 1
+offset_left = 103.0
+offset_right = 130.0
+offset_bottom = 30.0
+texture = SubResource("AtlasTexture_6rmj2")
+
+[node name="banana" type="TextureRect" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.337
+anchor_bottom = 0.337
+offset_left = 103.0
+offset_top = -14.528
+offset_right = 130.0
+offset_bottom = 14.472
+grow_vertical = 2
+texture = SubResource("AtlasTexture_vsj0x")
+
+[node name="cherry" type="TextureRect" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.58
+anchor_bottom = 0.58
+offset_left = 103.0
+offset_top = -14.52
+offset_right = 131.0
+offset_bottom = 14.48
+texture = SubResource("AtlasTexture_qsv74")
+
+[node name="orange" type="TextureRect" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.814
+anchor_bottom = 0.814
+offset_left = 103.0
+offset_top = -13.03
+offset_right = 135.0
+offset_bottom = 12.97
+texture = SubResource("AtlasTexture_h1mc3")
+
+[node name="melon" type="TextureRect" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.028
+anchor_bottom = 1.028
+offset_left = 103.0
+offset_top = -9.06
+offset_right = 131.0
+offset_bottom = 8.94
+texture = SubResource("AtlasTexture_cof4p")
+
+[node name="apple_Label" type="Label" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = -0.014
+anchor_right = 0.289
+anchor_bottom = -0.014
+offset_left = 10.985
+offset_top = -0.0739999
+offset_right = 58.985
+offset_bottom = 41.926
+theme_override_font_sizes/font_size = 30
+
+[node name="banana_Label" type="Label" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.244
+anchor_right = 0.289
+anchor_bottom = 0.244
+offset_left = 10.985
+offset_top = 0.0039978
+offset_right = 58.985
+offset_bottom = 42.004
+theme_override_font_sizes/font_size = 30
+
+[node name="cherry_Label" type="Label" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.488
+anchor_right = 0.289
+anchor_bottom = 0.488
+offset_left = 10.985
+offset_top = 0.00799561
+offset_right = 58.985
+offset_bottom = 42.008
+theme_override_font_sizes/font_size = 30
+
+[node name="orange_Label" type="Label" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.699
+anchor_right = 0.289
+anchor_bottom = 0.699
+offset_left = 10.985
+offset_top = -0.0910187
+offset_right = 58.985
+offset_bottom = 41.909
+theme_override_font_sizes/font_size = 30
+
+[node name="melon_Label" type="Label" parent="Control/fruit_num"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.928
+anchor_right = 0.289
+anchor_bottom = 0.928
+offset_left = 10.985
+offset_top = 0.0479889
+offset_right = 58.985
+offset_bottom = 42.048
+theme_override_font_sizes/font_size = 30
+
+[node name="health" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_right = 237.0
+offset_bottom = 56.0
+scale = Vector2(3.41108, 0.949845)
+
+[node name="heart" type="TextureRect" parent="Control/health"]
+layout_mode = 2
+offset_right = 16.0
+offset_bottom = 56.0
+texture = SubResource("AtlasTexture_cgfq5")
+
+[node name="heart2" type="TextureRect" parent="Control/health"]
+offset_left = 15.2444
+offset_right = 31.2444
+offset_bottom = 56.0
+texture = SubResource("AtlasTexture_cgfq5")
+
+[node name="heart3" type="TextureRect" parent="Control/health"]
+offset_left = 30.1957
+offset_right = 46.1957
+offset_bottom = 56.0
+texture = SubResource("AtlasTexture_cgfq5")
+
+[node name="start_panel" type="Panel" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.8
+anchor_bottom = 16.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/start_panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("8_cgfq5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/start_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.274
+anchor_top = 0.211
+anchor_right = 0.274
+anchor_bottom = 0.211
+offset_left = 0.35199
+offset_top = 0.271988
+offset_right = 534.352
+offset_bottom = 96.272
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Pixel Adventure"
+
+[node name="start_button" type="Button" parent="Control/start_panel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.422
+anchor_top = 0.526
+anchor_right = 0.422
+anchor_bottom = 0.526
+offset_left = -0.144012
+offset_top = 0.151978
+offset_right = 196.856
+offset_bottom = 66.152
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="end_panel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/end_panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("9_vdcm2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/end_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.365
+anchor_top = 0.201
+anchor_right = 0.365
+anchor_bottom = 0.201
+offset_left = -0.480011
+offset_top = -0.248001
+offset_right = 346.52
+offset_bottom = 95.752
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "You Win！"
+
+[node name="quit_button" type="Button" parent="Control/end_panel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.418
+anchor_top = 0.526
+anchor_right = 0.418
+anchor_bottom = 0.526
+offset_left = -0.536011
+offset_top = 0.151978
+offset_right = 181.464
+offset_bottom = 64.152
+theme_override_font_sizes/font_size = 40
+text = "Quit
+"
+
+[node name="dead_panel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/dead_panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("10_6rmj2")
+expand_mode = 1
+
+[node name="restart_button" type="Button" parent="Control/dead_panel"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.769
+anchor_right = 0.408
+anchor_bottom = 0.769
+offset_left = -0.0160217
+offset_top = -0.312042
+offset_right = 236.984
+offset_bottom = 69.688
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="transition_animation" type="Node2D" parent="."]
+visible = false
+position = Vector2(573, 317)
+scale = Vector2(2.84, 2.84)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_1"]]
+texture_filter = 1
+position = Vector2(-202, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_1"]]
+texture_filter = 1
+position = Vector2(-202, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D3" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_1"]]
+texture_filter = 1
+position = Vector2(-202, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D4" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_2"]]
+texture_filter = 1
+position = Vector2(-122, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D5" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_2"]]
+texture_filter = 1
+position = Vector2(-122, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D6" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_2"]]
+texture_filter = 1
+position = Vector2(-122, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D7" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_3"]]
+texture_filter = 1
+position = Vector2(-43, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D8" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_3"]]
+texture_filter = 1
+position = Vector2(-43, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D9" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_3"]]
+texture_filter = 1
+position = Vector2(-43, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D10" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_4"]]
+texture_filter = 1
+position = Vector2(39, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D11" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_4"]]
+texture_filter = 1
+position = Vector2(39, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D12" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_4"]]
+texture_filter = 1
+position = Vector2(39, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D13" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_5"]]
+texture_filter = 1
+position = Vector2(119, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D14" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_5"]]
+texture_filter = 1
+position = Vector2(119, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D15" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_5"]]
+texture_filter = 1
+position = Vector2(119, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D16" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_6"]]
+texture_filter = 1
+position = Vector2(196, -69)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D17" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_6"]]
+texture_filter = 1
+position = Vector2(196, 0)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="Sprite2D18" type="Sprite2D" parent="transition_animation" groups=["scalable_sprites_6"]]
+texture_filter = 1
+position = Vector2(196, 71)
+scale = Vector2(6, 6)
+texture = ExtResource("2_yev5y")
+
+[node name="column2_latency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="column3_latency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="column4_latency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="column5_latency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="column6_latency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="column2_latency" to="." method="_on_column_2_latency_timeout"]
+[connection signal="timeout" from="column3_latency" to="." method="_on_column_3_latency_timeout"]
+[connection signal="timeout" from="column4_latency" to="." method="_on_column_4_latency_timeout"]
+[connection signal="timeout" from="column5_latency" to="." method="_on_column_5_latency_timeout"]
+[connection signal="timeout" from="column6_latency" to="." method="_on_column_6_latency_timeout"]

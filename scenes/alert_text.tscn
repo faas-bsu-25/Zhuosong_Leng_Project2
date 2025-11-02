@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dvatajrkomydd"]
+
+[node name="alert_text" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 22.0
+offset_right = 768.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.971124, 0, 0.175762, 1)
+theme_override_font_sizes/font_size = 50
